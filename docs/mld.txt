@@ -1,6 +1,7 @@
 CATEGORY ( category code, name, description )
 BELONGS TO ( post code, category code )
 POST ( post code, title, content )
+COMMENT ( comment code, author, content, post code )
 BELONGS TO ( project code, category code )
 PROJECT ( project code, title, summary, description, github, demonstration, user code )
 SKILL ( skill code, name )
