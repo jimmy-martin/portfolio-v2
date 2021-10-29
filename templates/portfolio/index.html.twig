@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Portfolio -
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<!-- ======= Portfolio Section ======= -->
+<section id="work" class="portfolio-mf sect-pt4 route sect-mt4">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title-box text-center">
+          <h3 class="title-a">
+            Portfolio
+          </h3>
+          <p class="subtitle-a">
+            Voici la liste complète de tous mes projets
+          </p>
+          <div class="line-mf"></div>
+        </div>
+      </div>
+    </div>
+      <!-- Project start-->
+      <div id="<?= array_search($project, $portfolio) ?>" class="row mb-4">
+        <div class="card mb-3 work-box pb-2">
+          <div class="row g-0">
+            <div class="col-xxl-4 text-center">
+              <a href="{{ asset('assets/img/pokedex.png') }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
+                <div class="work-img">
+                  <img src="{{ asset('assets/img/pokedex.png') }}" alt="..." class="img-fluid">
+                </div>
+              </a>
+            </div>
+            <div class="col-xxl-8">
+              <div class="work-content">
+                <h5 class="w-title">Nom du projet</h5>
+                <p class="card-text"><small class="text-muted">Résumé du projet</small></p>
+                <div class="w-more">
+                  <p class="card-text">Description du projet</p>
+                  <a class="w-ctegory" href="#">Langages principaux du projet</a>
+                  <a class="w-ctegory" href="#">Langages principaux du projet</a>
+                </div>
+                <div class="w-like">
+                    <a class="" href="#" target="_blank"> <span class="bi bi-github"></span></a>
+                    <a class="" href="#" target="_blank"> <span class="bi bi-three-dots"></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Project end-->
+      <!-- Project start-->
+      <div id="<?= array_search($project, $portfolio) ?>" class="row mb-4">
+        <div class="card mb-3 work-box pb-2">
+          <div class="row g-0">
+            <div class="col-xxl-4 text-center">
+              <a href="{{ asset('assets/img/pokedex.png') }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
+                <div class="work-img">
+                  <img src="{{ asset('assets/img/pokedex.png') }}" alt="..." class="img-fluid">
+                </div>
+              </a>
+            </div>
+            <div class="col-xxl-8">
+              <div class="work-content">
+                <h5 class="w-title">Nom du projet</h5>
+                <p class="card-text"><small class="text-muted">Résumé du projet</small></p>
+                <div class="w-more">
+                  <p class="card-text">Description du projet</p>
+                  <a class="w-ctegory" href="#">Langages principaux du projet</a>
+                  <a class="w-ctegory" href="#">Langages principaux du projet</a>
+                </div>
+                <div class="w-like">
+                    <a class="" href="#" target="_blank"> <span class="bi bi-github"></span></a>
+                    <a class="" href="#" target="_blank"> <span class="bi bi-three-dots"></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Project end-->
+      <!-- Project start-->
+      <div id="<?= array_search($project, $portfolio) ?>" class="row mb-4">
+        <div class="card mb-3 work-box pb-2">
+          <div class="row g-0">
+            <div class="col-xxl-4 text-center">
+              <a href="{{ asset('assets/img/pokedex.png') }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
+                <div class="work-img">
+                  <img src="{{ asset('assets/img/pokedex.png') }}" alt="..." class="img-fluid">
+                </div>
+              </a>
+            </div>
+            <div class="col-xxl-8">
+              <div class="work-content">
+                <h5 class="w-title">Nom du projet</h5>
+                <p class="card-text"><small class="text-muted">Résumé du projet</small></p>
+                <div class="w-more">
+                  <p class="card-text">Description du projet</p>
+                  <a class="w-ctegory" href="#">Langages principaux du projet</a>
+                  <a class="w-ctegory" href="#">Langages principaux du projet</a>
+                </div>
+                <div class="w-like">
+                    <a class="" href="#" target="_blank"> <span class="bi bi-github"></span></a>
+                    <a class="" href="#" target="_blank"> <span class="bi bi-three-dots"></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Project end-->
+  </div>
+</section><!-- End Portfolio Section -->
+{% endblock %}
