@@ -1,16 +1,18 @@
+{% set currentRoute = app.request.get('_route') %}
+
 <nav id="navbar" class="navbar">
 	<ul>
 		<li>
-			<a class="nav-link scrollto active" href="{{ path('home') }}#hero">Accueil</a>
+			<a class="nav-link scrollto" href="{{ path('home') }}#hero">Accueil</a>
 		</li>
 		<li>
 			<a class="nav-link scrollto" href="{{ path('home') }}#about">A propos</a>
 		</li>
 		<li>
-			<a class="nav-link scrollto" href="{{ path('portfolio') }}">Portfolio</a>
+			<a class="nav-link scrollto {{ currentRoute == 'portfolio' ? 'active' : '' }}" href="{{ path('portfolio') }}">Portfolio</a>
 		</li>
 		<li>
-			<a class="nav-link scrollto" href="{{ path('contact') }}">Contact</a>
+			<a class="nav-link scrollto {{ currentRoute == 'contact' ? 'active' : '' }}" href="{{ path('contact') }}">Contact</a>
 		</li>
 	</ul>
 	<i class="bi bi-list mobile-nav-toggle"></i>
