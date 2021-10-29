@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<main
+		id="main">
+		<!-- ======= About Section ======= -->
+		<section id="about" class="about-mf sect-pt4 route">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="box-shadow-full">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="row">
+										<div class="col-sm-6 col-md-5">
+											<div class="about-img">
+												<img src="assets/img/me.jpeg" class="img-fluid rounded b-shadow-a" alt="">
+											</div>
+										</div>
+										<div class="col-sm-6 col-md-7">
+											<div class="about-info">
+												<p>
+													<span class="title-s">Nom:
+													</span>
+													<span>Martin</span>
+												</p>
+												<p>
+													<span class="title-s">Prénom:
+													</span>
+													<span>Jimmy</span>
+												</p>
+												<p>
+													<span class="title-s">Age:
+													</span>
+													<span>21 ans</span>
+												</p>
+												<p>
+													<span class="title-s">Profil:
+													</span>
+													<span>Développeur web PHP</span>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="skill-mf">
+										<p class="title-s">Technologies</p>
+										<ul style="list-style-type:none">
+											<li>PHP (POO)</li>
+											<li>MySQL</li>
+											<li>JavaScript</li>
+										</ul>
+										<p class="title-s">Systèmes</p>
+										<ul style="list-style-type:none">
+											<li>Linux (Ubuntu)</li>
+											<li>Windows</li>
+										</ul>
+										<p class="title-s">Outils</p>
+										<ul style="list-style-type:none">
+											<li>Git (GitHub)</li>
+										</ul>
+										<p class="title-s">Logiciels</p>
+										<ul style="list-style-type:none">
+											<li>Visual Studio Code</li>
+											<li>PHPStorm</li>
+											<li>Bureautique</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="about-me pt-4 pt-md-0">
+										<div class="title-box-2">
+											<h5 class="title-left">
+												A propos
+											</h5>
+										</div>
+										<p class="lead">
+											Hello, moi, c'est Jimmy, j'habite en région parisienne.
+										</p>
+										<p class="lead">
+											Passionné d'informatique, j'ai d'abord entrepris un BTS SIO (Services Informatiques aux Organisations option SLAM (Solutions Logicielles et Applications Métier)) que j'ai arrêté car la pédagogie de l'école et le programme ne me convenaient pas.
+										</p>
+										<p class="lead">
+											Après 2 années à travailler dans un tout autre domaine (la restauration), j'ai décidé de reprendre mes études en passant par une formation Développeur Web et Web Mobile que propose l'école O'clock dans laquelle je suis actuellement et qui se finit en Décembre 2021.
+										</p>
+										<p class="lead">
+											Après cette formation, j'aimerais continuer mes études par le moyen de l'alternance. Ainsi, si mon profil vous intéresse, je vous laisse utiliser le formulaire de contact ou bien mes liens vers mes différents réseaux sociaux afin de me contacter.
+										</p>
+										<div class="title-box-2 mt-4">
+											<h5 class="title-left">
+												Contact:
+											</h5>
+										</div>
+										<p>
+											<span class="title-s">Email:
+											</span>jimmy.martin952@gmail.com</p>
+										<div class="socials text-center">
+											<ul>
+												<li><a href="https://www.linkedin.com/in/jimmy-martin-dev/" target="_blank"><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
+												<li><a href="https://twitter.com/jimmydev_" target="_blank"><span class="ico-circle"><i class="bi bi-twitter"></i></span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End About Section -->
+
+		{% include "partials/_portfolio-preview.html.twig" %}
+	</main>
+	<!-- End #main -->
+{% endblock %}
