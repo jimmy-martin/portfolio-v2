@@ -1,6 +1,8 @@
 CATEGORY : category code, name, description
 BELONGS TO1, 1N POST, 0N CATEGORY
 POST : post code, title, content
+HAS2, 0N POST, 11 COMMENT
+COMMENT : comment code, author, content
 
 BELONGS TO, 1N PROJECT, 0N CATEGORY
 PROJECT : project code, title, summary, description, github, demonstration

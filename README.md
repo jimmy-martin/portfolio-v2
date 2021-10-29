@@ -4,7 +4,7 @@
 
 ## Schéma des données
 
-<img src="docs/Portoflio.svg">
+<img src="docs/Portfolio/Portfolio.svg">
 
 ## Modèle conceptuel de données
 
@@ -12,6 +12,8 @@
 CATEGORY : category code, name, description
 BELONGS TO1, 1N POST, 0N CATEGORY
 POST : post code, title, content
+HAS2, 0N POST, 11 COMMENT
+COMMENT : comment code, author, content
 
 BELONGS TO, 1N PROJECT, 0N CATEGORY
 PROJECT : project code, title, summary, description, github, demonstration
@@ -28,8 +30,10 @@ USER : user code, firstname, lastname, age, profil, email, github, twitter, link
 CATEGORY ( category code, name, description )
 BELONGS TO ( post code, category code )
 POST ( post code, title, content )
+COMMENT ( comment code, author, content, post code )
 BELONGS TO ( project code, category code )
 PROJECT ( project code, title, summary, description, github, demonstration, user code )
 SKILL ( skill code, name )
 HAS ( user code, skill code )
 USER ( user code, firstname, lastname, age, profil, email, github, twitter, linkedin )
+```
