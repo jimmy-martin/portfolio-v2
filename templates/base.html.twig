@@ -1,19 +1,49 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>
+			{% block title %}
+				Portfolio de Jimmy Martin | Développeur Web PHP
+			{% endblock %}
+		</title>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		{% include "partials/_meta.html.twig" %}
+
+		<!-- Favicons -->
+		<link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+		<link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+		{% block stylesheets %}
+			<!-- utils CSS Files -->
+			<link href="{{ asset('assets/utils/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+			<link href="{{ asset('assets/utils/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+			<link href="{{ asset('assets/utils/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+			<link
+			href="{{ asset('assets/utils/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+			<!-- Template Main CSS File -->
+			<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+		{% endblock %}
+
+		{% block javascripts %}
+			<script defer src="{{ asset('assets/utils/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/glightbox/js/glightbox.min.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/php-email-form/validate.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/purecounter/purecounter.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/swiper/swiper-bundle.min.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/typed.js/typed.min.js') }}"></script>
+
+			<!-- Template Main JS File -->
+			<script defer src="{{ asset('assets/js/main.js') }}"></script>
+		{% endblock %}
+	</head>
+	<body>
+		{% include "partials/_header.html.twig" %}
+
+		{% block body %}{% endblock %}
+
+		{% include "partials/_footer.html.twig" %}
+	</body>
 </html>
