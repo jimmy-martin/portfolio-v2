@@ -9,31 +9,39 @@
 ## Modèle conceptuel de données
 
 ```
-CATEGORY : category code, name, description
-BELONGS TO1, 1N POST, 0N CATEGORY
 POST : post code, title, content
-HAS2, 0N POST, 11 COMMENT
-COMMENT : comment code, author, content
+BELONGS TO1, 1N POST, 0N CATEGORY
+SKILL : skill code, name
+USES, 0N USER, 0N SKILL
+SOFTWARE : software code, name
 
+HAS2, 0N POST, 11 COMMENT
+CATEGORY : category code, name, description
+MADE BY, 11 PROJECT, 0N USER
+USER : user code, firstname, lastname, age, profil, email, github, twitter, linkedin
+USES3, 0N USER, 0N SOFTWARE
+
+COMMENT : comment code, author, content
 BELONGS TO, 1N PROJECT, 0N CATEGORY
 PROJECT : project code, title, summary, description, github, demonstration
-MADE BY, 11 PROJECT, 0N USER
-
-SKILL : skill code, name
-HAS, 0N USER, 0N SKILL
-USER : user code, firstname, lastname, age, profil, email, github, twitter, linkedin
+USES2, 0N USER, 0N OPERATING SYSTEM
+OPERATING SYSTEM : operating system code, name
 ```
 
 ## Modèle logique de données
 
 ```
-CATEGORY ( category code, name, description )
-BELONGS TO ( post code, category code )
 POST ( post code, title, content )
+BELONGS TO ( post code, category code )
+SKILL ( skill code, name )
+USES ( user code, skill code )
+SOFTWARE ( software code, name )
+CATEGORY ( category code, name, description )
+USER ( user code, firstname, lastname, age, profil, email, github, twitter, linkedin )
+USES ( user code, software code )
 COMMENT ( comment code, author, content, post code )
 BELONGS TO ( project code, category code )
 PROJECT ( project code, title, summary, description, github, demonstration, user code )
-SKILL ( skill code, name )
-HAS ( user code, skill code )
-USER ( user code, firstname, lastname, age, profil, email, github, twitter, linkedin )
+USES ( user code, operating system code )
+OPERATING SYSTEM ( operating system code, name )
 ```
