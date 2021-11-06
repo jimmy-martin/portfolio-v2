@@ -15,6 +15,7 @@
        </div>
      </div>
      <div class="row">
+     {% for project in projects %}
        <!-- Project start-->
        <div class="col-md-4">
          <div class="work-box">
@@ -26,10 +27,11 @@
            <div class="work-content">
              <div class="row">
                <div class="col-sm-8">
-                 <h2 class="w-title">Nom du projet</h2>
+                 <h2 class="w-title">{{ project.title }}</h2>
                  <div class="w-more">
-                   <a class="w-ctegory" href="#">PHP</a>
-                   <a class="w-ctegory" href="#">JavaScript</a>
+                 {% for category in project.categories %}
+                   <a class="w-ctegory" href="#">{{ category.name }}</a>
+                 {% endfor %}
                  </div>
                </div>
                <div class="col-sm-4">
@@ -41,61 +43,8 @@
            </div>
          </div>
        </div>
-       <!-- Project end-->       
-       <!-- Project start-->
-       <div class="col-md-4">
-         <div class="work-box">
-           <a href="{{ asset('assets/img/pokedex.png') }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
-             <div class="work-img">
-               <img src="{{ asset('assets/img/pokedex.png') }}" alt="" class="img-fluid">
-             </div>
-           </a>
-           <div class="work-content">
-             <div class="row">
-               <div class="col-sm-8">
-                 <h2 class="w-title">Nom du projet</h2>
-                 <div class="w-more">
-                   <a class="w-ctegory" href="#">PHP</a>
-                   <a class="w-ctegory" href="#">JavaScript</a>
-                 </div>
-               </div>
-               <div class="col-sm-4">
-                 <div class="w-like">
-                   <a href="#"> <span class="bi bi-plus-circle"></span></a>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-       <!-- Project end-->
-       <!-- Project start-->
-       <div class="col-md-4">
-         <div class="work-box">
-           <a href="{{ asset('assets/img/pokedex.png') }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
-             <div class="work-img">
-               <img src="{{ asset('assets/img/pokedex.png') }}" alt="" class="img-fluid">
-             </div>
-           </a>
-           <div class="work-content">
-             <div class="row">
-               <div class="col-sm-8">
-                 <h2 class="w-title">Nom du projet</h2>
-                 <div class="w-more">
-                   <a class="w-ctegory" href="#">PHP</a>
-                   <a class="w-ctegory" href="#">JavaScript</a>
-                 </div>
-               </div>
-               <div class="col-sm-4">
-                 <div class="w-like">
-                   <a href="#"> <span class="bi bi-plus-circle"></span></a>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-       <!-- Project end-->
+       <!-- Project end--> 
+     {% endfor %}
      </div>
    </div>
  </section><!-- End Portfolio Section -->
