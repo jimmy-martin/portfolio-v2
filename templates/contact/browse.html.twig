@@ -7,7 +7,7 @@
 
 {% block body %}
 	<!-- ======= Contact Section ======= -->
-	<section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({{ asset('assets/img/overlay-bg.jpg') }})">
+	<section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route mt-0" style="background-image: url({{ asset('assets/img/overlay-bg.jpg') }})">
 		<div class="overlay-mf"></div>
 		<div class="container">
 			<div class="row">
@@ -23,31 +23,16 @@
 									</div>
 									<div>
 										{{ form_start(form) }}
-										<div class="row">
-											<div class="col-md-12 mb-3">
-												<div class="form-group">
-													{{ form_row(form.name) }}
-												</div>
-											</div>
-											<div class="col-md-12 mb-3">
-												<div class="form-group">
-													{{ form_row(form.email) }}
-												</div>
-											</div>
-											<div class="col-md-12 mb-3">
-												<div class="form-group">
-													{{ form_row(form.subject) }}
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													{{ form_row(form.message) }}
-												</div>
-											</div>
-											<div class="col-md-12 text-center my-3">
-												<button type="submit" class="button button-a button-big button-rouded">Envoyer votre message</button>
-											</div>
+
+										{{ form_row(form.name) }}
+										{{ form_row(form.email) }}
+										{{ form_row(form.subject) }}
+										{{ form_row(form.message) }}
+
+										<div class="col-md-12 text-center my-3">
+											<button type="submit" class="button button-a button-big button-rouded">Envoyer votre message</button>
 										</div>
+
 										{{ form_end(form) }}
 									</div>
 								</div>
@@ -67,8 +52,20 @@
 									</div>
 									<div class="socials">
 										<ul>
-											<li><a href="{{ me.linkedin }}"><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
-											<li><a href="{{ me.twitter }}"><span class="ico-circle"><i class="bi bi-twitter"></i></span></a></li>
+											<li>
+												<ahref="{{me.linkedin}}">
+													<span class="ico-circle">
+														<i class="bi bi-linkedin"></i>
+													</span>
+												</ahref=>
+											</li>
+											<li>
+												<ahref="{{me.twitter}}">
+													<span class="ico-circle">
+														<i class="bi bi-twitter"></i>
+													</span>
+												</ahref=>
+											</li>
 										</ul>
 									</div>
 								</div>
