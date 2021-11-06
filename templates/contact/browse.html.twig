@@ -45,7 +45,7 @@
 									</div>
 									<div class="more-info">
 										<p class="lead">
-											Envie de me contacter via mes réseaux sociaux ?
+											Envie de me contacter via mes réseaux sociaux, ou autrement que par mon formulaire ?
 										</p>
 										<p class="lead">
 											Cliquer sur les liens juste en dessous et vous serez redirigé.
@@ -54,18 +54,25 @@
 									<div class="socials">
 										<ul>
 											<li>
-												<ahref="{{me.linkedin}}">
+												<a href="{{ me.linkedin }}">
 													<span class="ico-circle">
 														<i class="bi bi-linkedin"></i>
 													</span>
-												</ahref=>
+												</a>
 											</li>
 											<li>
-												<ahref="{{me.twitter}}">
+												<a href="{{ me.twitter }}">
 													<span class="ico-circle">
 														<i class="bi bi-twitter"></i>
 													</span>
-												</ahref=>
+												</a>
+											</li>
+											<li>
+												<a href="mailto:{{ myEmail }}">
+													<span class="ico-circle">
+														<i class="bi bi-envelope-fill"></i>
+													</span>
+												</a>
 											</li>
 										</ul>
 									</div>

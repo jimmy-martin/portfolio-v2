@@ -29,12 +29,13 @@ class ContactController extends AbstractController
 
         $form->handleRequest($request);
 
+        $myEmail = $this->getParameter('app.my_email');
+
         if ($form->isSubmitted() && $form->isValid()) {
             // dd($form->getData());
 
             $datas = $form->getData();
 
-            $myEmail = $this->getParameter('app.my_email');
 
             $email = (new Email())
                 ->from($datas['email'])
@@ -52,6 +53,7 @@ class ContactController extends AbstractController
         return $this->render('contact/browse.html.twig', [
             'form' => $form->createView(),
             'me' => $me,
+            'myEmail' => $myEmail,
         ]);
     }
 }
