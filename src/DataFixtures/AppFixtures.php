@@ -24,6 +24,7 @@ class AppFixtures extends Fixture
         $user->setGithub('https://github.com/jimmy-martin');
         $user->setTwitter('https://twitter.com/jimmydev_');
         $user->setLinkedin('https://www.linkedin.com/in/jimmy-martin-dev/');
+        $user->setPresentation("Après cette formation, j'aimerais continuer mes études par le moyen de l'alternance. Ainsi, si mon profil vous intéresse, je vous laisse utiliser le formulaire de contact ou bien mes liens vers mes différents réseaux sociaux afin de me contacter.");
         $manager->persist($user);
 
         for ($index = 1; $index <= 3; $index++) {
