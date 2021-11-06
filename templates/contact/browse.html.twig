@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Contact - {{ parent() }}
+	Contact -
+	{{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -21,33 +22,33 @@
 										</h5>
 									</div>
 									<div>
-										<form action="<?= $router->generate('main-mail') ?>" method="post" role="form">
-											<div class="row">
-												<div class="col-md-12 mb-3">
-													<div class="form-group">
-														<input type="text" name="name" class="form-control" id="name" placeholder="Votre nom" required>
-													</div>
-												</div>
-												<div class="col-md-12 mb-3">
-													<div class="form-group">
-														<input type="email" class="form-control" name="email" id="email" placeholder="Votre adresse email" required>
-													</div>
-												</div>
-												<div class="col-md-12 mb-3">
-													<div class="form-group">
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Objet du message" required>
-													</div>
-												</div>
-												<div class="col-md-12">
-													<div class="form-group">
-														<textarea class="form-control" name="message" rows="5" placeholder="Votre message" required></textarea>
-													</div>
-												</div>
-												<div class="col-md-12 text-center my-3">
-													<button type="submit" class="button button-a button-big button-rouded">Envoyer votre message</button>
+										{{ form_start(form) }}
+										<div class="row">
+											<div class="col-md-12 mb-3">
+												<div class="form-group">
+													{{ form_row(form.name) }}
 												</div>
 											</div>
-										</form>
+											<div class="col-md-12 mb-3">
+												<div class="form-group">
+													{{ form_row(form.email) }}
+												</div>
+											</div>
+											<div class="col-md-12 mb-3">
+												<div class="form-group">
+													{{ form_row(form.subject) }}
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													{{ form_row(form.message) }}
+												</div>
+											</div>
+											<div class="col-md-12 text-center my-3">
+												<button type="submit" class="button button-a button-big button-rouded">Envoyer votre message</button>
+											</div>
+										</div>
+										{{ form_end(form) }}
 									</div>
 								</div>
 								<div class="col-md-6">
