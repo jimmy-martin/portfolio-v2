@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Project;
+use App\Entity\Skill;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -22,6 +23,13 @@ class AppFixtures extends Fixture
         $user->setTwitter('https://twitter.com/jimmydev_');
         $user->setLinkedin('https://www.linkedin.com/in/jimmy-martin-dev/');
         $manager->persist($user);
+
+        for ($index = 1; $index <= 3; $index++) {
+            $skill = new Skill();
+            $skill->setName('Skill ' . $index);
+            $skill->addUser($user);
+            $manager->persist($skill);
+        }
 
         $categoryOne = new Category();
         $categoryOne->setName('Catégorie 1');
@@ -56,7 +64,7 @@ class AppFixtures extends Fixture
             $manager->persist($project);
         }
 
-        
+
         $manager->flush();
     }
 }
