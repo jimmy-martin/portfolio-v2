@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use App\Entity\Project;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -20,8 +21,22 @@ class AppFixtures extends Fixture
         $user->setGithub('https://github.com/jimmy-martin');
         $user->setTwitter('https://twitter.com/jimmydev_');
         $user->setLinkedin('https://www.linkedin.com/in/jimmy-martin-dev/');
+        $manager->persist($user);
 
-        for ($index = 1; $index <=5; $index++) {
+        $categoryOne = new Category();
+        $categoryOne->setName('Catégorie 1');
+        $manager->persist($categoryOne);
+
+        $categoryTwo = new Category();
+        $categoryTwo->setName('Catégorie 2');
+        $manager->persist($categoryTwo);
+
+        $categoryThree = new Category();
+        $categoryThree->setName('Catégorie 3');
+        $manager->persist($categoryThree);
+
+
+        for ($index = 1; $index <= 5; $index++) {
             $project = new Project();
             $project->setTitle('Projet ' . $index);
             $project->setSummary('Un extrait du projet ' . $index);
@@ -31,11 +46,17 @@ class AppFixtures extends Fixture
             $project->setUser($user);
             $project->setCreatedAt(new \DateTime());
             $project->setUpdatedAt(new \DateTime());
-            
+
+            $project->addCategory($categoryOne);
+
+            $project->addCategory($categoryTwo);
+
+            $project->addCategory($categoryThree);
+
             $manager->persist($project);
         }
 
-        $manager->persist($user);
+        
         $manager->flush();
     }
 }
