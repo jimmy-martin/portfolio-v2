@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\OperatingSystem;
 use App\Entity\Project;
 use App\Entity\Skill;
 use App\Entity\Software;
@@ -35,6 +36,11 @@ class AppFixtures extends Fixture
             $software->setName('Logiciel ' . $index);
             $software->addUser($user);
             $manager->persist($software);
+
+            $os = new OperatingSystem();
+            $os->setName('Système d\'exploitation ' . $index);
+            $os->addUser($user);
+            $manager->persist($os);
         }
 
         $categoryOne = new Category();
