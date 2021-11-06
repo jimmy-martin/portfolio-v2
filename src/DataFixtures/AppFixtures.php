@@ -21,6 +21,7 @@ class AppFixtures extends Fixture
         $user->setAge(21);
         $user->setProfil('Développeur PHP / Symfony / Laravel');
         $user->setEmail('jimmy.martin952@gmail.com');
+        $user->setImage('me.jpeg');
         $user->setGithub('https://github.com/jimmy-martin');
         $user->setTwitter('https://twitter.com/jimmydev_');
         $user->setLinkedin('https://www.linkedin.com/in/jimmy-martin-dev/');
@@ -65,6 +66,7 @@ class AppFixtures extends Fixture
             $project->setGithub('https://user/project' . $index);
             $project->setUrl('https://project' . $index);
             $project->setUser($user);
+            $project->setImage('pokedex.png');
             $project->setCreatedAt(new \DateTime());
             $project->setUpdatedAt(new \DateTime());
 
