@@ -79,6 +79,11 @@ class User
      */
     private $projects;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $presentation;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
@@ -286,6 +291,18 @@ class User
                 $project->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPresentation(): ?string
+    {
+        return $this->presentation;
+    }
+
+    public function setPresentation(string $presentation): self
+    {
+        $this->presentation = $presentation;
 
         return $this;
     }
