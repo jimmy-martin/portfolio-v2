@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Project;
 use App\Entity\Skill;
+use App\Entity\Software;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -29,6 +30,11 @@ class AppFixtures extends Fixture
             $skill->setName('Skill ' . $index);
             $skill->addUser($user);
             $manager->persist($skill);
+
+            $software = new Software();
+            $software->setName('Logiciel ' . $index);
+            $software->addUser($user);
+            $manager->persist($software);
         }
 
         $categoryOne = new Category();
