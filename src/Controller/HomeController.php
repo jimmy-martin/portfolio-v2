@@ -19,7 +19,7 @@ class HomeController extends AbstractController
     {
         $cache = new FilesystemAdapter();
 
-        $me = $cache->get('my_profil', function(ItemInterface $item) use ($userRepository) {
+        $me = $cache->get('my_profil', function (ItemInterface $item) use ($userRepository) {
             $item->expiresAfter(600);
 
             return $userRepository->find(1);
@@ -30,7 +30,7 @@ class HomeController extends AbstractController
         $myEmail = $this->getParameter('app.my_email');
 
 
-        $projects = $cache->get('last_six_projects', function(ItemInterface $item) use ($projectRepository) {
+        $projects = $cache->get('last_six_projects', function (ItemInterface $item) use ($projectRepository) {
             $item->expiresAfter(600);
 
             return $projectRepository->findLastSix();
