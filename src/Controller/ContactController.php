@@ -50,7 +50,7 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_browse');
         }
 
-        return $this->render('contact/browse.html.twig', [
+        return $this->render('front/contact/browse.html.twig', [
             'form' => $form->createView(),
             'me' => $me,
             'myEmail' => $myEmail,

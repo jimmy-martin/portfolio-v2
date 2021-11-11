@@ -25,7 +25,7 @@ class HomeController extends AbstractController
 
         // dump($me, $projects);
 
-        return $this->render('home/home.html.twig', [
+        return $this->render('front/home/home.html.twig', [
             'me' => $me,
             'projects' => $projects,
             'myEmail' => $myEmail,
