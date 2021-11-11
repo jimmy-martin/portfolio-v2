@@ -3,16 +3,26 @@
 namespace App\Controller\Back;
 
 use App\Entity\Project;
+use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/admin/project", name="back_project_")
+ * @Route("/admin/project", name="back_project_", requirements={"id"="\d+"})
  */
 class ProjectController extends AbstractController
 {
+    private $manager;
+
+    public function __construct(EntityManagerInterface $manager)
+    {
+        $this->manager = $manager;
+    }
+
     /**
      * @Route("", name="browse")
      */
@@ -30,6 +40,31 @@ class ProjectController extends AbstractController
     {
         return $this->render('back/project/read.html.twig', [
             'project' => $project,
+        ]);
+    }
+
+    /**
+     * @Route("/add", name="add")
+     */
+    public function add(Request $request)
+    {
+        $project = new Project();
+
+        $form = $this->createForm(ProjectType::class, $project);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->manager->persist($project);
+            $this->manager->flush();
+
+            $this->addFlash('success', 'Le projet a bien été ajouté');
+
+            return $this->redirectToRoute('back_project_browse');
+        }
+
+        return $this->render('back/project/add.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }
