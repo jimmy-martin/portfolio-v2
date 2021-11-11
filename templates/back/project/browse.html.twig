@@ -18,6 +18,7 @@
 				<th scope="col">Mini-description</th>
 				<th scope="col">Création</th>
                 <th scope="col">Dernière modification</th>
+				<th scope="col">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,6 +30,11 @@
 					<td>{{ project.summary }}</td>
                     <td>{{ project.createdAt | date('d/m/Y') }}</td>
                     <td>{{ project.updatedAt | date('d/m/Y') }}</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('back_project_read', {id: project.id}) }}">Voir</a>
+						<a class="btn btn-warning" href="{{ path('back_project_edit', {id: project.id}) }}">Modifier</a>
+						
+					</td>
 				</tr>
 
 			{% endfor %}
