@@ -21,7 +21,7 @@ class ContactController extends AbstractController
      */
     public function browse(UserRepository $userRepository, Request $request, MailerInterface $mailer): Response
     {
-        $me = $userRepository->find(1);
+        $user = $userRepository->find(1);
 
         $form = $this->createForm(ContactType::class);
 
@@ -48,7 +48,7 @@ class ContactController extends AbstractController
 
         return $this->render('front/contact/browse.html.twig', [
             'form' => $form->createView(),
-            'me' => $me,
+            'user' => $user,
         ]);
     }
 }
