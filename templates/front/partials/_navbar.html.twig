@@ -14,9 +14,11 @@
 		<li>
 			<a class="nav-link scrollto {{ currentRoute == 'front_contact_browse' ? 'active' : '' }}" href="{{ path('front_contact_browse') }}">Contact</a>
 		</li>
-		<li>
-			<a class="nav-link scrollto" href="{{ path('back_project_browse') }}">Backoffice</a>
-		</li>
+		{% if is_granted('ROLE_ADMIN') %}
+			<li>
+				<a class="nav-link scrollto" href="{{ path('back_project_browse') }}">Backoffice</a>
+			</li>
+		{% endif %}
 	</ul>
 	<i class="bi bi-list mobile-nav-toggle"></i>
 </nav>
