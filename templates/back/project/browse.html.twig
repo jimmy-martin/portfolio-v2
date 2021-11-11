@@ -1,0 +1,47 @@
+{% extends "back/base.html.twig" %}
+
+{% block title %}
+	Projets -
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="col-12">
+		<h1>Tous les projets</h1>
+		<a href="{{ path('back_project_add') }}" class="btn btn-primary">Ajouter un projet</a>
+	</div>
+	<table class="table table-hover mt-3">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Mini-description</th>
+				<th scope="col">Création</th>
+                <th scope="col">Dernière modification</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for project in projects %}
+
+				<tr class="table-{{ cycle(['secondary', 'light'], loop.index) }}">
+					<th scope="row">{{ project.id }}</th>
+					<td>{{ project.title }}</td>
+					<td>{{ project.summary }}</td>
+                    <td>{{ project.createdAt | date('d/m/Y') }}</td>
+                    <td>{{ project.updatedAt | date('d/m/Y') }}</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('back_project_read', {id: project.id}) }}">Voir</a>
+						<a class="btn btn-warning" href="{{ path('back_project_edit', {id: project.id}) }}">Modifier</a>
+						<form class="d-inline" action="{{ path('back_project_delete', {id: project.id}) }}" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete_project' ~ project.id) }}">
+							<button class="btn btn-danger">Supprimer</button>
+						</form>
+					</td>
+				</tr>
+
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

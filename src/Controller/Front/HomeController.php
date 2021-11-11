@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Front;
 
 use App\Repository\ProjectRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Cache\ItemInterface;
 
 class HomeController extends AbstractController
 {
@@ -25,7 +23,7 @@ class HomeController extends AbstractController
 
         // dump($me, $projects);
 
-        return $this->render('home/home.html.twig', [
+        return $this->render('front/home/home.html.twig', [
             'me' => $me,
             'projects' => $projects,
             'myEmail' => $myEmail,

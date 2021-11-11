@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Front;
 
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Cache\ItemInterface;
 
 /**
- * @Route("/portfolio", name="portfolio_")
+ * @Route("/portfolio", name="front_portfolio_")
  */
 class PortfolioController extends AbstractController
 {
@@ -19,9 +17,9 @@ class PortfolioController extends AbstractController
      */
     public function browse(ProjectRepository $projectRepository): Response
     {
-        $projects = $projectRepository->findAll();
+        $projects = $projectRepository->findAllDESC();
 
-        return $this->render('portfolio/browse.html.twig', [
+        return $this->render('front/portfolio/browse.html.twig', [
             'projects' => $projects,
         ]);
     }

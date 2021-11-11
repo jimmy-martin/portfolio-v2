@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Front;
 
 use App\Form\ContactType;
 use App\Repository\UserRepository;
@@ -11,10 +11,8 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
-use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
-
 /**
- * @Route("/contact", name="contact_")
+ * @Route("/contact", name="front_contact_")
  */
 class ContactController extends AbstractController
 {
@@ -50,7 +48,7 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_browse');
         }
 
-        return $this->render('contact/browse.html.twig', [
+        return $this->render('front/contact/browse.html.twig', [
             'form' => $form->createView(),
             'me' => $me,
             'myEmail' => $myEmail,
