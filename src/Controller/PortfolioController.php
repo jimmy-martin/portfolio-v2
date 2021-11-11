@@ -19,15 +19,7 @@ class PortfolioController extends AbstractController
      */
     public function browse(ProjectRepository $projectRepository): Response
     {
-        $cache = new FilesystemAdapter();
-
-        $projects = $cache->get('all_projects', function(ItemInterface $item) use ($projectRepository) {
-            $item->expiresAfter(600);
-
-            return $projectRepository->findAll();
-        });
-
-        // $projects = $projectRepository->findAll();
+        $projects = $projectRepository->findAll();
 
         return $this->render('portfolio/browse.html.twig', [
             'projects' => $projects,

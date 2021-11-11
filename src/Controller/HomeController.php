@@ -17,26 +17,11 @@ class HomeController extends AbstractController
      */
     public function home(UserRepository $userRepository, ProjectRepository $projectRepository): Response
     {
-        $cache = new FilesystemAdapter();
-
-        $me = $cache->get('my_profil', function (ItemInterface $item) use ($userRepository) {
-            $item->expiresAfter(600);
-
-            return $userRepository->find(1);
-        });
-
-        // $me = $userRepository->find(1);
+        $me = $userRepository->find(1);
 
         $myEmail = $this->getParameter('app.my_email');
 
-
-        $projects = $cache->get('last_six_projects', function (ItemInterface $item) use ($projectRepository) {
-            $item->expiresAfter(600);
-
-            return $projectRepository->findLastSix();
-        });
-
-        // $projects = $projectRepository->findLastSix();
+        $projects = $projectRepository->findLastSix();
 
         // dump($me, $projects);
 
