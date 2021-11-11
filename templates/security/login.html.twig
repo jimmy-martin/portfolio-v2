@@ -23,6 +23,7 @@
 
 {% block body %}
 	<body class="container mt-5">
+		{% include "back/partials/_flash.html.twig" %}
 		<form method="post">
 			{% if error %}
 				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
