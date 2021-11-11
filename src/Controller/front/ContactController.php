@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Front\Controller;
 
 use App\Form\ContactType;
 use App\Repository\UserRepository;
