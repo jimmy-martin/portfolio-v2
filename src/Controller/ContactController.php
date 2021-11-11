@@ -11,8 +11,6 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
-use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
-
 /**
  * @Route("/contact", name="contact_")
  */
