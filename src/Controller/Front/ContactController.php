@@ -27,8 +27,6 @@ class ContactController extends AbstractController
 
         $form->handleRequest($request);
 
-        $myEmail = $this->getParameter('app.my_email');
-
         if ($form->isSubmitted() && $form->isValid()) {
             // dd($form->getData());
 
@@ -37,7 +35,7 @@ class ContactController extends AbstractController
 
             $email = (new Email())
                 ->from($datas['email'])
-                ->to($myEmail)
+                ->to($userRepository->find(1)->getEmail())
                 ->subject($datas['subject'])
                 ->text('De la part de ' . $datas['name'] . ' : ' . $datas['message']);
 
@@ -51,7 +49,6 @@ class ContactController extends AbstractController
         return $this->render('front/contact/browse.html.twig', [
             'form' => $form->createView(),
             'me' => $me,
-            'myEmail' => $myEmail,
         ]);
     }
 }

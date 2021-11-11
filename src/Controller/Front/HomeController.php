@@ -17,8 +17,6 @@ class HomeController extends AbstractController
     {
         $me = $userRepository->find(1);
 
-        $myEmail = $this->getParameter('app.my_email');
-
         $projects = $projectRepository->findLastSix();
 
         // dump($me, $projects);
@@ -26,7 +24,6 @@ class HomeController extends AbstractController
         return $this->render('front/home/home.html.twig', [
             'me' => $me,
             'projects' => $projects,
-            'myEmail' => $myEmail,
         ]);
     }
 }
