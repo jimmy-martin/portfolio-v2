@@ -1,0 +1,45 @@
+{% extends "back/base.html.twig" %}
+
+{% block title %}
+	{{ user.username }}
+	-
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="col-12">
+		<h1 class="mb-3">Login : {{ user.username }}</h1>
+	</div>
+	<div class="col-7">
+
+		<h3>Nom</h3>
+		<p>{{ user.lastname }}</p>
+
+		<h3>Prénom</h3>
+		<p>{{ user.firstname }}</p>
+
+        <h3>Âge</h3>
+		<p>{{ user.age }}</p>
+
+        <h3>Profil</h3>
+		<p>{{ user.profil }}</p>
+
+        <h3>Présentation</h3>
+		<p>{{ user.presentation }}</p>
+
+	</div>
+	<div class="col-5">
+		<h3>Liens</h3>
+		<ul>
+			<li>Linkedin : <a href="{{ user.linkedin }}" target="_blank">{{ user.linkedin }}</a></li>
+			<li>Twitter : <a href="{{ user.twitter }}" target="_blank">{{ user.twitter }}</a></li>
+            <li>Adresse mail : {{ user.email }}</li>
+            <li>GitHub : <a href="{{ user.github }}" target="_blank">{{ user.github }}</a></li>
+		</ul>
+
+        <h3>Image</h3>
+        <img src="{{ asset('assets/img/' ~ user.image) }}" alt="" class="img-fluid">
+	</div>
+
+    {# <a href="{{ path('back_user_edit', {id: user.id}) }}" class="btn btn-warning mt-4">Modifier</a> #}
+{% endblock %}
