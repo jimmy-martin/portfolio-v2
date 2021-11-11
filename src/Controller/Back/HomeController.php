@@ -13,8 +13,6 @@ class HomeController extends AbstractController
      */
     public function browse(): Response
     {
-        return $this->render('back/home/browse.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        return $this->render('back/home/browse.html.twig');
     }
 }

@@ -1,18 +1,37 @@
 {% extends "back/base.html.twig" %}
 
+{% block title %}
+	Projets -
+	{{ parent() }}
+{% endblock %}
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="col-12">
+		<h1>Tous les projets</h1>
+		<a href="#" class="btn btn-primary">Ajouter un projet</a>
+	</div>
+	<table class="table table-hover mt-3">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Mini-description</th>
+				<th scope="col">Création</th>
+                <th scope="col">Dernière modification</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for project in projects %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+				<tr class="table-{{ cycle(['secondary', 'light'], loop.index) }}">
+					<th scope="row">{{ project.id }}</th>
+					<td>{{ project.title }}</td>
+					<td>{{ project.summary }}</td>
+                    <td>{{ project.createdAt | date('d/m/Y') }}</td>
+                    <td>{{ project.updatedAt | date('d/m/Y') }}</td>
+				</tr>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/personnal-projects/portfolio-v2/src/Controller/Back/ProjectController.php'|file_link(0) }}">src/Controller/Back/ProjectController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/personnal-projects/portfolio-v2/templates/back/project/index.html.twig'|file_link(0) }}">templates/back/project/index.html.twig</a></code></li>
-    </ul>
-</div>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}
