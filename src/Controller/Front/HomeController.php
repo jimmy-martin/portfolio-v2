@@ -15,14 +15,14 @@ class HomeController extends AbstractController
      */
     public function home(UserRepository $userRepository, ProjectRepository $projectRepository): Response
     {
-        $me = $userRepository->find(1);
+        $user = $userRepository->find(1);
 
         $projects = $projectRepository->findLastSix();
 
-        // dump($me, $projects);
+        // dump($user, $projects);
 
         return $this->render('front/home/home.html.twig', [
-            'me' => $me,
+            'user' => $user,
             'projects' => $projects,
         ]);
     }
