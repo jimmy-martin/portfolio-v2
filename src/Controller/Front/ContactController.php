@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Front\Controller;
+namespace App\Controller\Front;
 
 use App\Form\ContactType;
 use App\Repository\UserRepository;
@@ -12,7 +12,7 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/contact", name="contact_")
+ * @Route("/contact", name="front_contact_")
  */
 class ContactController extends AbstractController
 {

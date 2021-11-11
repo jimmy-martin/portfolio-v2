@@ -9,10 +9,13 @@
 			<a class="nav-link scrollto" href="{{ path('home') }}#about">A propos</a>
 		</li>
 		<li>
-			<a class="nav-link scrollto {{ currentRoute == 'portfolio_browse' ? 'active' : '' }}" href="{{ path('portfolio_browse') }}">Portfolio</a>
+			<a class="nav-link scrollto {{ currentRoute == 'front_portfolio_browse' ? 'active' : '' }}" href="{{ path('front_portfolio_browse') }}">Portfolio</a>
 		</li>
 		<li>
-			<a class="nav-link scrollto {{ currentRoute == 'contact_browse' ? 'active' : '' }}" href="{{ path('contact_browse') }}">Contact</a>
+			<a class="nav-link scrollto {{ currentRoute == 'front_contact_browse' ? 'active' : '' }}" href="{{ path('front_contact_browse') }}">Contact</a>
+		</li>
+		<li>
+			<a class="nav-link scrollto" href="{{ path('back_project_browse') }}">Backoffice</a>
 		</li>
 	</ul>
 	<i class="bi bi-list mobile-nav-toggle"></i>

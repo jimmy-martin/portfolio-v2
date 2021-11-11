@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Front\Controller;
+namespace App\Controller\Front;
 
 use App\Repository\ProjectRepository;
 use App\Repository\UserRepository;
