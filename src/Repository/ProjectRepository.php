@@ -22,8 +22,16 @@ class ProjectRepository extends ServiceEntityRepository
     public function findLastSix()
     {
         return $this->createQueryBuilder('lastSix')
-            ->orderBy('lastSix.createdAt')
+            ->orderBy('lastSix.createdAt', 'DESC')
             ->setMaxResults(6)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllDESC()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC')
             ->getQuery()
             ->getResult();
     }

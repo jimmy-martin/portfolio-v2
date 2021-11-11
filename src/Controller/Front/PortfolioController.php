@@ -17,7 +17,7 @@ class PortfolioController extends AbstractController
      */
     public function browse(ProjectRepository $projectRepository): Response
     {
-        $projects = $projectRepository->findAll();
+        $projects = $projectRepository->findAllDESC();
 
         return $this->render('front/portfolio/browse.html.twig', [
             'projects' => $projects,
