@@ -33,7 +33,11 @@
 					<td>
 						<a class="btn btn-primary" href="{{ path('back_project_read', {id: project.id}) }}">Voir</a>
 						<a class="btn btn-warning" href="{{ path('back_project_edit', {id: project.id}) }}">Modifier</a>
-						
+						<form class="d-inline" action="{{ path('back_project_delete', {id: project.id}) }}" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete_project' ~ project.id) }}">
+							<button class="btn btn-danger">Supprimer</button>
+						</form>
 					</td>
 				</tr>
 

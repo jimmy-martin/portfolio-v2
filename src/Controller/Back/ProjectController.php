@@ -90,4 +90,25 @@ class ProjectController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/delete/{id}", name="delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Project $project)
+    {
+        $submittedAntiCSRFToken = $request->request->get('_token');
+
+        if($this->isCsrfTokenValid('delete_project' . $project->getId(), $submittedAntiCSRFToken)) {
+            $this->manager->remove($project);
+            $this->manager->flush();
+
+            $this->addFlash('success', 'Le projet a bien été supprimé');
+
+            return $this->redirectToRoute('back_project_browse');
+        }
+
+        $this->addFlash('danger', 'Une erreur est survenue lors de la suppression');
+
+        return $this->redirectToRoute('back_project_browse');
+    }
 }
