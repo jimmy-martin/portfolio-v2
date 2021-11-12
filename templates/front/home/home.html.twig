@@ -11,14 +11,14 @@
 					<div class="col-sm-12">
 						<div class="box-shadow-full">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="text-center col-md-6">
 									<div class="row">
-										<div class="col-sm-6 col-md-5">
+										<div class="col-12">
 											<div class="about-img">
 												<img src="{{ asset('assets/img/me.jpeg') }}" class="img-fluid rounded b-shadow-a" alt="">
 											</div>
 										</div>
-										<div class="col-sm-6 col-md-7">
+										<div class="col-12">
 											<div class="about-info">
 												<p>
 													<span class="title-s">Nom:
@@ -43,21 +43,21 @@
 											</div>
 										</div>
 									</div>
-									<div class="skill-mf">
-										<p class="title-s">Technologies</p>
-										<ul style="list-style-type:none">
+									<div class="skill-mf fs-6">
+										<p class="title-s fs-4">Technologies</p>
+										<ul class="ps-0"style="list-style-type:none">
 											{% for skill in user.skills %}
 												<li>{{ skill.name }}</li>
 											{% endfor %}
 										</ul>
-										<p class="title-s">Systèmes</p>
-										<ul style="list-style-type:none">
+										<p class="title-s fs-4">Systèmes</p>
+										<ul class="ps-0"style="list-style-type:none">
 											{% for operatingSystem in user.operatingSystems %}
 												<li>{{ operatingSystem.name }}</li>
 											{% endfor %}
 										</ul>
-										<p class="title-s">Logiciels</p>
-										<ul style="list-style-type:none">
+										<p class="title-s fs-4">Logiciels</p>
+										<ul class="ps-0"style="list-style-type:none">
 											{% for software in user.softwares %}
 												<li>{{ software.name }}</li>
 											{% endfor %}
