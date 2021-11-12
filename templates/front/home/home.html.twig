@@ -1,0 +1,106 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+	{% include "front/partials/_hero.html.twig" %}
+	<main
+		id="main">
+		<!-- ======= About Section ======= -->
+		<section id="about" class="about-mf sect-pt4 route">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="box-shadow-full">
+							<div class="row">
+								<div class="text-center col-md-6">
+									<div class="row">
+										<div class="col-12">
+											<div class="about-img">
+												<img src="{{ asset('assets/img/me.jpeg') }}" class="img-fluid rounded b-shadow-a" alt="">
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="about-info">
+												<p>
+													<span class="title-s">Nom:
+													</span>
+													<span>{{ user.lastname }}</span>
+												</p>
+												<p>
+													<span class="title-s">Prénom:
+													</span>
+													<span>{{ user.firstname }}</span>
+												</p>
+												<p>
+													<span class="title-s">Age:
+													</span>
+													<span>{{ user.age }} ans</span>
+												</p>
+												<p>
+													<span class="title-s">Profil:
+													</span>
+													<span>{{ user.profil }}</span>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="skill-mf fs-6">
+										<p class="title-s fs-4">Technologies</p>
+										<ul class="ps-0"style="list-style-type:none">
+											{% for skill in user.skills %}
+												<li>{{ skill.name }}</li>
+											{% endfor %}
+										</ul>
+										<p class="title-s fs-4">Systèmes</p>
+										<ul class="ps-0"style="list-style-type:none">
+											{% for operatingSystem in user.operatingSystems %}
+												<li>{{ operatingSystem.name }}</li>
+											{% endfor %}
+										</ul>
+										<p class="title-s fs-4">Logiciels</p>
+										<ul class="ps-0"style="list-style-type:none">
+											{% for software in user.softwares %}
+												<li>{{ software.name }}</li>
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="about-me pt-4 pt-md-0">
+										<div class="title-box-2">
+											<h5 class="title-left">
+												A propos
+											</h5>
+										</div>
+										<p class="lead">
+											{{ user.presentation | nl2br }}
+										</p>
+										<div class="title-box-2 mt-4">
+											<h5 class="title-left">
+												Contact:
+											</h5>
+										</div>
+										<p>
+											<span class="title-s">Email:
+											</span><a href="mailto:{{ user.email }}">{{ user.email }}</a>
+											</p>
+										<div class="socials text-center">
+											<ul>
+												<li><a href="{{ user.linkedin }}"><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
+												<li><a href="{{ user.twitter }}"><span class="ico-circle"><i class="bi bi-twitter"></i></span></a></li>
+												<li><a href="mailto:{{ user.email }}"><span class="ico-circle"><i class="bi bi-envelope-fill"></i></span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End About Section -->
+
+		{% include "front/partials/_portfolio-preview.html.twig" %}
+	</main>
+	<!-- End #main -->
+{% endblock %}

@@ -1,0 +1,25 @@
+{% set currentRoute = app.request.get('_route') %}
+
+<nav id="navbar" class="navbar">
+	<ul>
+		<li>
+			<a class="nav-link scrollto" href="{{ path('home') }}#hero">Accueil</a>
+		</li>
+		<li>
+			<a class="nav-link scrollto" href="{{ path('home') }}#about">A propos</a>
+		</li>
+		<li>
+			<a class="nav-link scrollto {{ currentRoute == 'front_portfolio_browse' ? 'active' : '' }}" href="{{ path('front_portfolio_browse') }}">Portfolio</a>
+		</li>
+		<li>
+			<a class="nav-link scrollto {{ currentRoute == 'front_contact_browse' ? 'active' : '' }}" href="{{ path('front_contact_browse') }}">Contact</a>
+		</li>
+		{% if is_granted('ROLE_ADMIN') %}
+			<li>
+				<a class="nav-link scrollto" href="{{ path('back_project_browse') }}">Backoffice</a>
+			</li>
+		{% endif %}
+	</ul>
+	<i class="bi bi-list mobile-nav-toggle"></i>
+</nav>
+<!-- .navbar -->

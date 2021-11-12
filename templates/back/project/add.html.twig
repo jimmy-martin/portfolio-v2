@@ -1,0 +1,26 @@
+{% extends "back/base.html.twig" %}
+
+{% block title %}
+	Ajouter un projet
+	-
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="col-12">
+		<h1 class="mb-3">Ajouter un projet</h1>
+	</div>
+	{{ form_start(form) }}
+
+    {{ form_row(form.title) }}
+    {{ form_row(form.summary) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.github) }}
+    {{ form_row(form.url) }}
+    {{ form_row(form.user) }}
+    {{ form_row(form.categories) }}
+    {{ form_row(form.image) }}
+    
+    <button class="btn btn-primary" type="submit">Ajouter</button>
+	{{ form_end(form) }}
+{% endblock %}

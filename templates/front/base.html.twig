@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>
+			{% block title %}
+				Portfolio de Jimmy Martin | Développeur Web PHP
+			{% endblock %}
+		</title>
+
+		{% include "front/partials/_meta.html.twig" %}
+
+		<!-- Favicons -->
+		<link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+		<link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+		{% block stylesheets %}
+			<!-- utils CSS Files -->
+			<link href="{{ asset('assets/utils/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+			<link href="{{ asset('assets/utils/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+			<link href="{{ asset('assets/utils/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+			<link
+			href="{{ asset('assets/utils/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+			<!-- Template Main CSS File -->
+			<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+		{% endblock %}
+
+		{% block javascripts %}
+			<script defer src="{{ asset('assets/utils/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/glightbox/js/glightbox.min.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/php-email-form/validate.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/purecounter/purecounter.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/swiper/swiper-bundle.min.js') }}"></script>
+			<script defer src="{{ asset('assets/utils/typed.js/typed.min.js') }}"></script>
+
+			<!-- Template Main JS File -->
+			<script defer src="{{ asset('assets/js/main.js') }}"></script>
+		{% endblock %}
+	</head>
+	<body>
+		{% include "front/partials/_header.html.twig" %}
+
+		{% block body %}{% endblock %}
+
+		{% include "front/partials/_footer.html.twig" %}
+	</body>
+</html>
