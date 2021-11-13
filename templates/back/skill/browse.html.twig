@@ -1,0 +1,40 @@
+{% extends "back/base.html.twig" %}
+
+{% block title %}
+	Compétences -
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="col-12">
+		<h1>Toutes les compétences</h1>
+		<a href="{{ path('back_skill_add') }}" class="btn btn-primary">Ajouter une compétence</a>
+	</div>
+	<table class="table table-hover mt-3">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for skill in skills %}
+
+				<tr class="table-{{ cycle(['secondary', 'light'], loop.index) }}">
+					<th scope="row">{{ skill.id }}</th>
+					<td>{{ skill.name }}</td>
+					<td>
+						<a class="btn btn-warning" href="{{ path('back_skill_edit', {id: skill.id}) }}">Modifier</a>
+						<form class="d-inline" action="{{ path('back_skill_delete', {id: skill.id}) }}" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete_skill' ~ skill.id) }}">
+							<button class="btn btn-danger">Supprimer</button>
+						</form>
+					</td>
+				</tr>
+
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "back/base.html.twig" %}
+
+{% block title %}
+	Systèmes d'exploitation -
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="col-12">
+		<h1>Tous les systèmes d'exploitation</h1>
+		<a href="{{ path('back_operating_system_add') }}" class="btn btn-primary">Ajouter un système d'exploitation</a>
+	</div>
+	<table class="table table-hover mt-3">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for operatingSystem in operatingSystems %}
+
+				<tr class="table-{{ cycle(['secondary', 'light'], loop.index) }}">
+					<th scope="row">{{ operatingSystem.id }}</th>
+					<td>{{ operatingSystem.name }}</td>
+					<td>
+						<a class="btn btn-warning" href="{{ path('back_operating_system_edit', {id: operatingSystem.id}) }}">Modifier</a>
+						<form class="d-inline" action="{{ path('back_operating_system_delete', {id: operatingSystem.id}) }}" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete_operating_system' ~ operatingSystem.id) }}">
+							<button class="btn btn-danger">Supprimer</button>
+						</form>
+					</td>
+				</tr>
+
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -26,10 +26,10 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="read")
      */
-    public function read(User $user): Response
+    public function read(): Response
     {
         return $this->render('back/user/read.html.twig', [
-            'user' => $user,
+            'user' => $this->getUser(),
         ]);
     }
 
