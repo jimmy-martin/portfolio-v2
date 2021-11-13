@@ -43,7 +43,7 @@ class ContactController extends AbstractController
 
             $this->addFlash('success', 'Votre email a bien été envoyé.');
 
-            return $this->redirectToRoute('contact_browse');
+            return $this->redirectToRoute('front_contact_browse');
         }
 
         return $this->render('front/contact/browse.html.twig', [
