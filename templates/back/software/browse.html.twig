@@ -1,0 +1,40 @@
+{% extends "back/base.html.twig" %}
+
+{% block title %}
+	Logiciels -
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="col-12">
+		<h1>Toutes les logiciels</h1>
+		<a href="{{ path('back_software_add') }}" class="btn btn-primary">Ajouter un logiciel</a>
+	</div>
+	<table class="table table-hover mt-3">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for software in softwares %}
+
+				<tr class="table-{{ cycle(['secondary', 'light'], loop.index) }}">
+					<th scope="row">{{ software.id }}</th>
+					<td>{{ software.name }}</td>
+					<td>
+						<a class="btn btn-warning" href="{{ path('back_software_edit', {id: software.id}) }}">Modifier</a>
+						<form class="d-inline" action="{{ path('back_software_delete', {id: software.id}) }}" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete_software' ~ software.id) }}">
+							<button class="btn btn-danger">Supprimer</button>
+						</form>
+					</td>
+				</tr>
+
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
