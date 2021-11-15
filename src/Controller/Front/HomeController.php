@@ -15,7 +15,9 @@ class HomeController extends AbstractController
      */
     public function home(UserRepository $userRepository, ProjectRepository $projectRepository): Response
     {
-        $user = $userRepository->find(1);
+        $user = $userRepository->findOneBy(
+            ['firstname' => 'Jimmy'],
+        );
 
         $projects = $projectRepository->findLastSix();
 

@@ -21,7 +21,9 @@ class ContactController extends AbstractController
      */
     public function browse(UserRepository $userRepository, Request $request, MailerInterface $mailer): Response
     {
-        $user = $userRepository->find(1);
+        $user = $userRepository->findOneBy(
+            ['firstname' => 'Jimmy'],
+        );
 
         $form = $this->createForm(ContactType::class);
 
@@ -32,10 +34,9 @@ class ContactController extends AbstractController
 
             $datas = $form->getData();
 
-
             $email = (new Email())
                 ->from($datas['email'])
-                ->to($userRepository->find(1)->getEmail())
+                ->to($user->getEmail())
                 ->subject($datas['subject'])
                 ->text('De la part de ' . $datas['name'] . ' : ' . $datas['message']);
 
