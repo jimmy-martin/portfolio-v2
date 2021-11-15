@@ -7,6 +7,7 @@
 	<p>{{ user.profil }}</p>
 
 	<h3>Présentation</h3>
+	<a href="{{ path('back_user_edit_presentation', {id: app.user.id}) }}" class="btn btn-warning my-2 text-dark">Modifier la présentation</a>
 	<p>{{ user.presentation | nl2br() }}</p>
 
 </div>
