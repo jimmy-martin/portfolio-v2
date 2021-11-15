@@ -4,6 +4,7 @@ namespace App\Controller\Front;
 
 use App\Form\ContactType;
 use App\Repository\UserRepository;
+use App\Service\EmailSender;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +20,7 @@ class ContactController extends AbstractController
     /**
      * @Route("", name="browse")
      */
-    public function browse(UserRepository $userRepository, Request $request, MailerInterface $mailer): Response
+    public function browse(UserRepository $userRepository, Request $request, EmailSender $emailSender): Response
     {
         $user = $userRepository->findOneBy(
             ['firstname' => 'Jimmy'],
@@ -34,13 +35,12 @@ class ContactController extends AbstractController
 
             $datas = $form->getData();
 
-            $email = (new Email())
-                ->from($datas['email'])
-                ->to($user->getEmail())
-                ->subject($datas['subject'])
-                ->text('De la part de ' . $datas['name'] . ' : ' . $datas['message']);
-
-            $mailer->send($email);
+            $emailSender->sendStandard(
+                $datas['email'],
+                $user->getEmail(),
+                $datas['subject'],
+                'De la part de ' . $datas['name'] . ' : ' . $datas['message']
+            );
 
             $this->addFlash('success', 'Votre email a bien été envoyé.');
 
