@@ -1,0 +1,18 @@
+{% extends "back/base.html.twig" %}
+
+{% block title %}
+	Modifier la présentation
+			-
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="col-12">
+		<h1 class="mb-3">Modifier la présentation de {{ user.username }}</h1>
+	</div>
+	{{ form_start(form) }}
+	{{ form_row(form.presentation) }}
+
+	<button class="btn btn-primary" type="submit">Modifier</button>
+	{{ form_end(form) }}
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller\Back;
 
 use App\Entity\User;
+use App\Form\UserPresentationType;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,6 +65,30 @@ class UserController extends AbstractController
 
         return $this->render('back/user/edit.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/edit/presentation/{id}", name="edit_presentation")
+     */
+    public function editPresentation(User $user, Request $request)
+    {
+        $form = $this->createForm(UserPresentationType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->manager->flush();
+
+            $this->addFlash('success', 'Présentation modifié');
+
+            return $this->redirectToRoute('back_user_read', ['id' => $user->getId()]);
+        }
+
+        return $this->render('back/user/edit_presentation.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
         ]);
     }
 }
