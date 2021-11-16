@@ -66,12 +66,4 @@ class ContactController extends AbstractController
             'user' => $user,
         ]);
     }
-
-    /**
-     * @Route("/email", name="mail")
-     */
-    public function seeEmailconfirmation()
-    {
-        return $this->render('emails/confirmation.html.twig');
-    }
 }
