@@ -4,6 +4,7 @@ namespace App\Controller\Front;
 
 use App\Form\ContactType;
 use App\Repository\UserRepository;
+use App\Service\EmailSender;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +20,7 @@ class ContactController extends AbstractController
     /**
      * @Route("", name="browse")
      */
-    public function browse(UserRepository $userRepository, Request $request, MailerInterface $mailer): Response
+    public function browse(UserRepository $userRepository, Request $request, EmailSender $emailSender): Response
     {
         $user = $userRepository->findOneBy(
             ['firstname' => 'Jimmy'],
@@ -34,15 +35,28 @@ class ContactController extends AbstractController
 
             $datas = $form->getData();
 
-            $email = (new Email())
-                ->from($datas['email'])
-                ->to($user->getEmail())
-                ->subject($datas['subject'])
-                ->text('De la part de ' . $datas['name'] . ' : ' . $datas['message']);
+            $isEmailSend = $emailSender->sendStandard(
+                $datas['email'],
+                $user->getEmail(),
+                $datas['message'],
+                $datas['subject']
+            );
 
-            $mailer->send($email);
+            if ($isEmailSend === true) {
+                $this->addFlash('success', 'Votre email a bien été envoyé.');
 
-            $this->addFlash('success', 'Votre email a bien été envoyé.');
+                $emailSender->sendTemplatedEmail(
+                    $user->getEmail(),
+                    $datas['email'],
+                    [
+                        'sender' => $datas['name'],
+                    ],
+                    'Confirmation email Portfolio de Jimmy MARTIN'
+                );
+
+            } else {
+                $this->addFlash('danger', 'Une erreur s\'est produite, veuillez réessayer.');
+            }
 
             return $this->redirectToRoute('front_contact_browse');
         }
@@ -51,5 +65,13 @@ class ContactController extends AbstractController
             'form' => $form->createView(),
             'user' => $user,
         ]);
+    }
+
+    /**
+     * @Route("/email", name="mail")
+     */
+    public function seeEmailconfirmation()
+    {
+        return $this->render('emails/confirmation.html.twig');
     }
 }
