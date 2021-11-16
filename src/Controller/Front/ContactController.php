@@ -35,14 +35,28 @@ class ContactController extends AbstractController
 
             $datas = $form->getData();
 
-            $emailSender->sendStandard(
+            $isEmailSend = $emailSender->sendStandard(
                 $datas['email'],
                 $user->getEmail(),
-                $datas['subject'],
-                'De la part de ' . $datas['name'] . ' : ' . $datas['message']
+                $datas['message'],
+                $datas['subject']
             );
 
-            $this->addFlash('success', 'Votre email a bien été envoyé.');
+            if ($isEmailSend === true) {
+                $this->addFlash('success', 'Votre email a bien été envoyé.');
+
+                $emailSender->sendTemplatedEmail(
+                    $user->getEmail(),
+                    $datas['email'],
+                    [
+                        'sender' => $datas['name'],
+                    ],
+                    'Confirmation email Portfolio de Jimmy MARTIN'
+                );
+
+            } else {
+                $this->addFlash('danger', 'Une erreur s\'est produite, veuillez réessayer.');
+            }
 
             return $this->redirectToRoute('front_contact_browse');
         }
@@ -51,5 +65,13 @@ class ContactController extends AbstractController
             'form' => $form->createView(),
             'user' => $user,
         ]);
+    }
+
+    /**
+     * @Route("/email", name="mail")
+     */
+    public function seeEmailconfirmation()
+    {
+        return $this->render('emails/confirmation.html.twig');
     }
 }
