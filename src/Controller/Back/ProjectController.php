@@ -61,8 +61,6 @@ class ProjectController extends AbstractController
             $this->addFlash('success', 'Le projet a bien été ajouté');
 
             return $this->redirectToRoute('back_project_browse');
-
-            // TODO: ajouter la possibilité d'ajouter et de revenir sur le formulaire d'ajout au lieu de rediriger sur la page browse
         }
 
         return $this->render('back/project/add.html.twig', [
@@ -100,7 +98,7 @@ class ProjectController extends AbstractController
     {
         $submittedAntiCSRFToken = $request->request->get('_token');
 
-        if($this->isCsrfTokenValid('delete_project' . $project->getId(), $submittedAntiCSRFToken)) {
+        if ($this->isCsrfTokenValid('delete_project' . $project->getId(), $submittedAntiCSRFToken)) {
             $this->manager->remove($project);
             $this->manager->flush();
 
@@ -110,6 +108,27 @@ class ProjectController extends AbstractController
         }
 
         $this->addFlash('danger', 'Une erreur est survenue lors de la suppression');
+
+        return $this->redirectToRoute('back_project_browse');
+    }
+
+    /**
+     * @Route("/homepage/toggle/{id}", name="homepage_toggle")
+     */
+    public function toggleToHomePage(Project $project, Request $request)
+    {
+        $submittedAntiCSRFToken = $request->request->get('_token');
+
+        if ($this->isCsrfTokenValid('homepage_add_project' . $project->getId(), $submittedAntiCSRFToken)) {
+            $project->setOnHome(!$project->getOnHome());
+            $this->manager->flush();
+
+            $this->addFlash('success', 'Le projet a bien été ajouté sur la page d\'accueil');
+
+            return $this->redirectToRoute('back_project_browse');
+        }
+
+        $this->addFlash('danger', 'Une erreur est survenue lors de l\'ajout sur la page d\'accueil');
 
         return $this->redirectToRoute('back_project_browse');
     }

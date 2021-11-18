@@ -50,9 +50,11 @@ class OperatingSystemController extends AbstractController
 
             $this->addFlash('success', 'Le système d\'exploitation a bien été ajouté');
 
-            return $this->redirectToRoute('back_operating_system_browse');
+            if ($form->get('add_again')->isClicked()) {
+                return $this->redirectToRoute('back_operating_system_add');
+            }
 
-            // TODO: ajouter la possibilité d'ajouter et de revenir sur le formulaire d'ajout au lieu de rediriger sur la page browse
+            return $this->redirectToRoute('back_operating_system_browse');
         }
 
         return $this->render('back/operating_system/add.html.twig', [

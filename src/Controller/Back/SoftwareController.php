@@ -50,9 +50,11 @@ class SoftwareController extends AbstractController
 
             $this->addFlash('success', 'Le logiciel a bien été ajouté');
 
-            return $this->redirectToRoute('back_software_browse');
+            if ($form->get('add_again')->isClicked()) {
+                return $this->redirectToRoute('back_software_add');
+            }
 
-            // TODO: ajouter la possibilité d'ajouter et de revenir sur le formulaire d'ajout au lieu de rediriger sur la page browse
+            return $this->redirectToRoute('back_software_browse');
         }
 
         return $this->render('back/software/add.html.twig', [
@@ -89,7 +91,7 @@ class SoftwareController extends AbstractController
     {
         $submittedAntiCSRFToken = $request->request->get('_token');
 
-        if($this->isCsrfTokenValid('delete_software' . $software->getId(), $submittedAntiCSRFToken)) {
+        if ($this->isCsrfTokenValid('delete_software' . $software->getId(), $submittedAntiCSRFToken)) {
             $this->manager->remove($software);
             $this->manager->flush();
 

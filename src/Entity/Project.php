@@ -70,6 +70,11 @@ class Project
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default"=false})
+     */
+    private $onHome;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -214,6 +219,18 @@ class Project
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getOnHome(): ?bool
+    {
+        return $this->onHome;
+    }
+
+    public function setOnHome(bool $onHome): self
+    {
+        $this->onHome = $onHome;
 
         return $this;
     }

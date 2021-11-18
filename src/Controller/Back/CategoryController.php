@@ -50,9 +50,11 @@ class CategoryController extends AbstractController
 
             $this->addFlash('success', 'La catégorie a bien été ajoutée');
 
-            return $this->redirectToRoute('back_category_browse');
+            if ($form->get('add_again')->isClicked()) {
+                return $this->redirectToRoute('back_category_add');
+            }
 
-            // TODO: ajouter la possibilité d'ajouter et de revenir sur le formulaire d'ajout au lieu de rediriger sur la page browse
+            return $this->redirectToRoute('back_category_browse');
         }
 
         return $this->render('back/category/add.html.twig', [
