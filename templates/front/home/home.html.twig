@@ -11,9 +11,9 @@
 					<div class="col-sm-12">
 						<div class="box-shadow-full">
 							<div class="row">
-								<div class="text-center col-md-6">
+								<div class="col-md-6">
 									<div class="row">
-										<div class="col-12">
+										<div class="col-12 text-center">
 											<div class="about-img">
 												<img src="{{ asset('assets/img/' ~ user.image) }}" class="img-fluid" alt="mon image" style="border-radius: 50%">
 											</div>
@@ -44,19 +44,19 @@
 										</div>
 									</div>
 									<div class="skill-mf fs-6">
-										<p class="title-s fs-4">Technologies</p>
+										<p class="title-left fs-4">Technologies</p>
 										<ul class="ps-0"style="list-style-type:none">
 											{% for skill in user.skills %}
 												<li>{{ skill.name }}</li>
 											{% endfor %}
 										</ul>
-										<p class="title-s fs-4">Systèmes</p>
+										<p class="title-left fs-4">Systèmes</p>
 										<ul class="ps-0"style="list-style-type:none">
 											{% for operatingSystem in user.operatingSystems %}
 												<li>{{ operatingSystem.name }}</li>
 											{% endfor %}
 										</ul>
-										<p class="title-s fs-4">Logiciels</p>
+										<p class="title-left fs-4">Logiciels</p>
 										<ul class="ps-0"style="list-style-type:none">
 											{% for software in user.softwares %}
 												<li>{{ software.name }}</li>
