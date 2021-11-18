@@ -1,50 +1,53 @@
 <!-- ======= Portfolio Section ======= -->
- <section id="work" class="portfolio-mf sect-pt4 route sect-mt4">
-   <div class="container">
-     <div class="row">
-       <div class="col-sm-12">
-         <div class="title-box text-center">
-           <h3 class="title-a">
-             Quelques projets
-           </h3>
-           <p class="subtitle-a">
-             Voici la liste de mes 6 derniers projets
-           </p>
-           <div class="line-mf"></div>
-         </div>
-       </div>
-     </div>
-     <div class="row">
-     {% for project in projects %}
-       <!-- Project start-->
-       <div class="col-md-4">
-         <div class="work-box">
-           <a href="{{ asset('assets/img/pokedex.png') }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
-             <div class="work-img">
-               <img src="{{ asset('assets/img/pokedex.png') }}" alt="" class="img-fluid">
-             </div>
-           </a>
-           <div class="work-content">
-             <div class="row">
-               <div class="col-sm-8">
-                 <h2 class="w-title">{{ project.title }}</h2>
-                 <div class="w-more">
-                 {% for category in project.categories %}
-                   <a class="w-ctegory" href="#">{{ category.name }}</a>
-                 {% endfor %}
-                 </div>
-               </div>
-               <div class="col-sm-4">
-                 <div class="w-like">
-                   <a class="squareIcon" href="{{ path('front_portfolio_browse') }}#{{ project.id }}"> <span class="bi bi-arrow-right-square"></span></a>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-       <!-- Project end--> 
-     {% endfor %}
-     </div>
-   </div>
- </section><!-- End Portfolio Section -->
+<section id="work" class="portfolio-mf sect-pt4 route sect-mt4">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="title-box text-center">
+					<h3 class="title-a">
+						Quelques projets
+					</h3>
+					<p class="subtitle-a">
+						Voici la liste des projets que je souhaite mettre en avant
+					</p>
+					<div class="line-mf"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% for project in projects %}
+				<!-- Project start-->
+				<div class="col-md-4">
+					<div class="work-box">
+						<a href="{{ asset('assets/img/pokedex.png') }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
+							<div class="work-img">
+								<img src="{{ asset('assets/img/pokedex.png') }}" alt="" class="img-fluid">
+							</div>
+						</a>
+						<div class="work-content">
+							<div class="row">
+								<div class="col-sm-8">
+									<h2 class="w-title">{{ project.title }}</h2>
+									<div class="w-more">
+										{% for category in project.categories %}
+											<a class="w-ctegory" href="#">{{ category.name }}</a>
+										{% endfor %}
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="w-like">
+										<a class="squareIcon" href="{{ path('front_portfolio_browse') }}#{{ project.id }}">
+											<span class="bi bi-arrow-right-square"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Project end-->
+			{% endfor %}
+		</div>
+	</div>
+</section>
+<!-- End Portfolio Section -->
