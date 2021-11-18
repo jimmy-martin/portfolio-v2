@@ -51,6 +51,8 @@ class SkillController extends AbstractController
             $this->addFlash('success', 'La compétence a bien été ajoutée');
 
             return $this->redirectToRoute('back_skill_browse');
+
+            // TODO: ajouter la possibilité d'ajouter et de revenir sur le formulaire d'ajout au lieu de rediriger sur la page browse
         }
 
         return $this->render('back/skill/add.html.twig', [
