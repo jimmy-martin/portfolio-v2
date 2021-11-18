@@ -61,8 +61,6 @@ class ProjectController extends AbstractController
             $this->addFlash('success', 'Le projet a bien été ajouté');
 
             return $this->redirectToRoute('back_project_browse');
-
-            // TODO: ajouter la possibilité d'ajouter et de revenir sur le formulaire d'ajout au lieu de rediriger sur la page browse
         }
 
         return $this->render('back/project/add.html.twig', [

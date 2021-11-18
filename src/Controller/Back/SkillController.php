@@ -50,9 +50,11 @@ class SkillController extends AbstractController
 
             $this->addFlash('success', 'La compétence a bien été ajoutée');
 
-            return $this->redirectToRoute('back_skill_browse');
+            if ($form->get('add_again')->isClicked()) {
+                return $this->redirectToRoute('back_skill_add');
+            }
 
-            // TODO: ajouter la possibilité d'ajouter et de revenir sur le formulaire d'ajout au lieu de rediriger sur la page browse
+            return $this->redirectToRoute('back_skill_browse');
         }
 
         return $this->render('back/skill/add.html.twig', [
@@ -89,7 +91,7 @@ class SkillController extends AbstractController
     {
         $submittedAntiCSRFToken = $request->request->get('_token');
 
-        if($this->isCsrfTokenValid('delete_skill' . $skill->getId(), $submittedAntiCSRFToken)) {
+        if ($this->isCsrfTokenValid('delete_skill' . $skill->getId(), $submittedAntiCSRFToken)) {
             $this->manager->remove($skill);
             $this->manager->flush();
 

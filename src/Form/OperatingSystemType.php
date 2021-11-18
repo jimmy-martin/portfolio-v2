@@ -6,6 +6,7 @@ use App\Entity\OperatingSystem;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class OperatingSystemType extends AbstractType
 {
@@ -14,6 +15,12 @@ class OperatingSystemType extends AbstractType
         $builder
             ->add('name', null, [
                 'label' => 'Nom',
+            ])
+            ->add('add', SubmitType::class, [
+                'label' => 'Ajouter',
+            ])
+            ->add('add_again', SubmitType::class, [
+                'label' => 'Ajouter et revenir à la page d\'ajout',
             ])
         ;
     }
