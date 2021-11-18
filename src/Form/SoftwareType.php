@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class SoftwareType extends AbstractType
 {
@@ -22,7 +24,15 @@ class SoftwareType extends AbstractType
             ->add('add_again', SubmitType::class, [
                 'label' => 'Ajouter et revenir à la page d\'ajout',
             ])
-        ;
+            ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+                $software = $event->getData();
+                $form = $event->getForm();
+
+                if ($software->getId() != null) {
+                    $form->remove('add');
+                    $form->remove('add_again');
+                }
+            });
     }
 
     public function configureOptions(OptionsResolver $resolver): void

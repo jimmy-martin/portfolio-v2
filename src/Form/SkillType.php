@@ -3,10 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Skill;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SkillType extends AbstractType
 {
@@ -22,7 +24,15 @@ class SkillType extends AbstractType
             ->add('add_again', SubmitType::class, [
                 'label' => 'Ajouter et revenir à la page d\'ajout',
             ])
-        ;
+            ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+                $skill = $event->getData();
+                $form = $event->getForm();
+
+                if ($skill->getId() != null) {
+                    $form->remove('add');
+                    $form->remove('add_again');
+                }
+            });
     }
 
     public function configureOptions(OptionsResolver $resolver): void
