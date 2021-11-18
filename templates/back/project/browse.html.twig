@@ -17,7 +17,8 @@
 				<th scope="col">Nom</th>
 				<th scope="col">Mini-description</th>
 				<th scope="col">Création</th>
-                <th scope="col">Dernière modification</th>
+				<th scope="col">Dernière modification</th>
+				<th scope="col">Page d'accueil</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</thead>
@@ -28,8 +29,18 @@
 					<th scope="row">{{ project.id }}</th>
 					<td>{{ project.title }}</td>
 					<td>{{ project.summary }}</td>
-                    <td>{{ project.createdAt | date('d/m/Y') }}</td>
-                    <td>{{ project.updatedAt | date('d/m/Y') }}</td>
+					<td>{{ project.createdAt | date('d/m/Y') }}</td>
+					<td>{{ project.updatedAt | date('d/m/Y') }}</td>
+					<td>
+						<form class="d-inline" action="{{ path('back_project_homepage_toggle', {id: project.id}) }}" method="post">
+							<input type="hidden" name="_token" value="{{ csrf_token('homepage_add_project' ~ project.id) }}">
+							{% if project.onHome == true %}
+								<button class="btn btn-danger">Retirer</button>
+							{% else %}
+								<button class="btn btn-primary">Ajouter</button>
+							{% endif %}
+						</form>
+					</td>
 					<td>
 						<a class="btn btn-primary" href="{{ path('back_project_read', {id: project.id}) }}">Voir</a>
 						<a class="btn btn-warning" href="{{ path('back_project_edit', {id: project.id}) }}">Modifier</a>

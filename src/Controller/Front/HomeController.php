@@ -19,9 +19,11 @@ class HomeController extends AbstractController
             ['firstname' => 'Jimmy'],
         );
 
-        $projects = $projectRepository->findLastSix();
+        $projects = $projectRepository->findBy([
+            'onHome' => true,
+        ]);
 
-        // dump($user, $projects);
+        // dd($projects);
 
         return $this->render('front/home/home.html.twig', [
             'user' => $user,
