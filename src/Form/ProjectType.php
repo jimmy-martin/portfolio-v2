@@ -37,7 +37,7 @@ class ProjectType extends AbstractType
             ])
 
             ->add('image', FileType::class, [
-                'label' => 'Nom du fichier image',
+                'label' => 'Screenshot du projet',
                 'mapped' => false,
                 'required' => true,
                 'constraints' => [
