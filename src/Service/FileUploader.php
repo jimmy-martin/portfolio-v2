@@ -31,10 +31,21 @@ class FileUploader
         $newFileName = $this->createFileName($file);
 
         $file->move(
-            'img',
+            'assets/img',
             $newFileName
         );
 
         return $newFileName;
+    }
+
+    public function uploadProjectImage(Form $form)
+    {
+        $project = $form->getData();
+        
+        $newFileName = $this->upload($form, 'image');
+
+        if ($newFileName) {
+            $project->setImage($newFileName);
+        }
     }
 }
