@@ -61,6 +61,10 @@ class ProjectType extends AbstractType
                 'expanded' => true,
             ])
 
+            ->add('onHome', null, [
+                'label' => 'Mettre sur la page d\'accueil'
+            ])
+
             ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $project = $event->getData();
                 $form = $event->getForm();
