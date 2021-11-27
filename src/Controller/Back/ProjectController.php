@@ -83,7 +83,9 @@ class ProjectController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $fileUploader->uploadProjectImage($form);
+            if ($form->get('image')->getData()) {
+                $fileUploader->uploadProjectImage($form);
+            }
 
             $project->setUpdatedAt(new \DateTime());
             $this->manager->flush();
