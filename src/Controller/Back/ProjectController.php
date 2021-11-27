@@ -5,6 +5,7 @@ namespace App\Controller\Back;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
+use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,7 +47,7 @@ class ProjectController extends AbstractController
     /**
      * @Route("/add", name="add")
      */
-    public function add(Request $request)
+    public function add(FileUploader $fileUploader, Request $request)
     {
         $project = new Project();
 
@@ -55,6 +56,9 @@ class ProjectController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $fileUploader->uploadProjectImage($form);
+
             $this->manager->persist($project);
             $this->manager->flush();
 
@@ -71,13 +75,16 @@ class ProjectController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit")
      */
-    public function edit(Request $request, Project $project)
+    public function edit(FileUploader $fileUploader, Request $request, Project $project)
     {
         $form = $this->createForm(ProjectType::class, $project);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $fileUploader->uploadProjectImage($form);
+
             $project->setUpdatedAt(new \DateTime());
             $this->manager->flush();
 
@@ -98,7 +105,7 @@ class ProjectController extends AbstractController
     {
         $submittedAntiCSRFToken = $request->request->get('_token');
 
-        if($this->isCsrfTokenValid('delete_project' . $project->getId(), $submittedAntiCSRFToken)) {
+        if ($this->isCsrfTokenValid('delete_project' . $project->getId(), $submittedAntiCSRFToken)) {
             $this->manager->remove($project);
             $this->manager->flush();
 
@@ -108,6 +115,27 @@ class ProjectController extends AbstractController
         }
 
         $this->addFlash('danger', 'Une erreur est survenue lors de la suppression');
+
+        return $this->redirectToRoute('back_project_browse');
+    }
+
+    /**
+     * @Route("/homepage/toggle/{id}", name="homepage_toggle")
+     */
+    public function toggleToHomePage(Project $project, Request $request)
+    {
+        $submittedAntiCSRFToken = $request->request->get('_token');
+
+        if ($this->isCsrfTokenValid('homepage_add_project' . $project->getId(), $submittedAntiCSRFToken)) {
+            $project->setOnHome(!$project->getOnHome());
+            $this->manager->flush();
+
+            $this->addFlash('success', 'Le projet a bien été ajouté sur la page d\'accueil');
+
+            return $this->redirectToRoute('back_project_browse');
+        }
+
+        $this->addFlash('danger', 'Une erreur est survenue lors de l\'ajout sur la page d\'accueil');
 
         return $this->redirectToRoute('back_project_browse');
     }

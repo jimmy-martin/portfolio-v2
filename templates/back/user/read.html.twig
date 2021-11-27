@@ -8,7 +8,8 @@
 
 {% block body %}
 	<div class="col-12">
-		<h1 class="mb-3">Login : {{ user.username }}</h1>
+		<h1 class="mb-3">Login :
+			{{ user.username }}</h1>
 	</div>
 	<div class="col-7">
 
@@ -18,28 +19,58 @@
 		<h3>Prénom</h3>
 		<p>{{ user.firstname }}</p>
 
-        <h3>Âge</h3>
+		<h3>Âge</h3>
 		<p>{{ user.age }}</p>
 
-        <h3>Profil</h3>
+		<h3>Profil</h3>
 		<p>{{ user.profil }}</p>
 
-        <h3>Présentation</h3>
-		<p>{{ user.presentation }}</p>
+		<h3>Présentation</h3>
+		<p>{{ user.presentation | nl2br() }}</p>
 
 	</div>
 	<div class="col-5">
-		<h3>Liens</h3>
+		<h3>Image</h3>
+		<img src="{{ asset('assets/img/' ~ user.image) }}" alt="" class="img-fluid">
+
+		<h3 class="mt-2">Liens</h3>
 		<ul>
-			<li>Linkedin : <a href="{{ user.linkedin }}" target="_blank">{{ user.linkedin }}</a></li>
-			<li>Twitter : <a href="{{ user.twitter }}" target="_blank">{{ user.twitter }}</a></li>
-            <li>Adresse mail : {{ user.email }}</li>
-            <li>GitHub : <a href="{{ user.github }}" target="_blank">{{ user.github }}</a></li>
+			<li>Linkedin :
+				<a href="{{ user.linkedin }}" target="_blank">{{ user.linkedin }}</a>
+			</li>
+			<li>Twitter :
+				<a href="{{ user.twitter }}" target="_blank">{{ user.twitter }}</a>
+			</li>
+			<li>Adresse mail :
+				{{ user.email }}</li>
+			<li>GitHub :
+				<a href="{{ user.github }}" target="_blank">{{ user.github }}</a>
+			</li>
 		</ul>
 
-        <h3>Image</h3>
-        <img src="{{ asset('assets/img/' ~ user.image) }}" alt="" class="img-fluid">
+		<h3>Compétences :</h3>
+		<ul>
+			{% for skill in user.skills %}
+				<li>{{ skill.name }}</li>
+			{% endfor %}
+		</ul>
+
+		<h3>Logiciels :</h3>
+		<ul>
+			{% for software in user.softwares %}
+				<li>{{ software.name }}</li>
+			{% endfor %}
+		</ul>
+
+		<h3>Systèmes d'exploitation :</h3>
+		<ul>
+			{% for operatingSystem in user.operatingSystems %}
+				<li>{{ operatingSystem.name }}</li>
+			{% endfor %}
+		</ul>
+
+
 	</div>
 
-    <a href="{{ path('back_user_edit', {id: user.id}) }}" class="btn btn-warning mt-4 text-dark">Modifier</a>
+	<a href="{{ path('back_user_edit', {id: user.id}) }}" class="btn btn-warning mt-4 text-dark">Modifier</a>
 {% endblock %}

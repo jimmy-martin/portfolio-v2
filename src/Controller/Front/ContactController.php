@@ -4,11 +4,10 @@ namespace App\Controller\Front;
 
 use App\Form\ContactType;
 use App\Repository\UserRepository;
+use App\Service\EmailSender;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -19,9 +18,11 @@ class ContactController extends AbstractController
     /**
      * @Route("", name="browse")
      */
-    public function browse(UserRepository $userRepository, Request $request, MailerInterface $mailer): Response
+    public function browse(UserRepository $userRepository, Request $request, EmailSender $emailSender): Response
     {
-        $user = $userRepository->find(1);
+        $user = $userRepository->findOneBy(
+            ['firstname' => 'Jimmy'],
+        );
 
         $form = $this->createForm(ContactType::class);
 
@@ -32,18 +33,30 @@ class ContactController extends AbstractController
 
             $datas = $form->getData();
 
+            $isEmailSend = $emailSender->sendStandard(
+                $datas['email'],
+                $user->getEmail(),
+                $datas['message'],
+                $datas['subject']
+            );
 
-            $email = (new Email())
-                ->from($datas['email'])
-                ->to($userRepository->find(1)->getEmail())
-                ->subject($datas['subject'])
-                ->text('De la part de ' . $datas['name'] . ' : ' . $datas['message']);
+            if ($isEmailSend === true) {
+                $this->addFlash('success', 'Votre email a bien été envoyé.');
 
-            $mailer->send($email);
+                $emailSender->sendTemplatedEmail(
+                    $user->getEmail(),
+                    $datas['email'],
+                    [
+                        'sender' => $datas['name'],
+                    ],
+                    'Confirmation email Portfolio de Jimmy MARTIN'
+                );
 
-            $this->addFlash('success', 'Votre email a bien été envoyé.');
+            } else {
+                $this->addFlash('danger', 'Une erreur s\'est produite, veuillez réessayer.');
+            }
 
-            return $this->redirectToRoute('contact_browse');
+            return $this->redirectToRoute('front_contact_browse');
         }
 
         return $this->render('front/contact/browse.html.twig', [

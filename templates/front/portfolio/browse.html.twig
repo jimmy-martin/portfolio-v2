@@ -47,12 +47,16 @@
 										{% endfor %}
 									</div>
 									<div class="w-like">
-										<a class="" href="{{ project.github }}" target="_blank">
-											<span class="bi bi-github"></span>
-										</a>
-										<a class="" href="{{ project.url }}" target="_blank">
-											<span class="bi bi-three-dots"></span>
-										</a>
+										{% if project.github != null%}
+											<a class="" href="{{ project.github }}" target="_blank">
+												<span class="bi bi-github"></span>
+											</a>
+										{% endif %}
+										{% if project.url != null%}
+											<a class="eyeIcon" href="{{ project.url }}" target="_blank">
+												<span class="bi bi-eye"></span>
+											</a>
+										{% endif %}
 									</div>
 								</div>
 							</div>
