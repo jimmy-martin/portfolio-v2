@@ -33,7 +33,8 @@
 												<p>
 													<span class="title-s">Age:
 													</span>
-													<span>{{ user.age }} ans</span>
+													<span>{{ user.age }}
+														ans</span>
 												</p>
 												<p>
 													<span class="title-s">Profil:
@@ -44,20 +45,20 @@
 										</div>
 									</div>
 									<div class="skill-mf fs-6">
-										<p class="title-left fs-4">Technologies</p>
-										<ul class="ps-0"style="list-style-type:none">
+										<h5 class="title-left fs-3 mb-3">Technologies</h5>
+										<ul class="ps-0" style="list-style-type:none">
 											{% for skill in user.skills %}
 												<li>{{ skill.name }}</li>
 											{% endfor %}
 										</ul>
-										<p class="title-left fs-4">Systèmes</p>
-										<ul class="ps-0"style="list-style-type:none">
+										<h5 class="title-left fs-3 mb-3">Systèmes</h5>
+										<ul class="ps-0" style="list-style-type:none">
 											{% for operatingSystem in user.operatingSystems %}
 												<li>{{ operatingSystem.name }}</li>
 											{% endfor %}
 										</ul>
-										<p class="title-left fs-4">Logiciels</p>
-										<ul class="ps-0"style="list-style-type:none">
+										<h5 class="title-left fs-3 mb-3">Logiciels</h5>
+										<ul class="ps-0" style="list-style-type:none">
 											{% for software in user.softwares %}
 												<li>{{ software.name }}</li>
 											{% endfor %}
@@ -81,13 +82,20 @@
 										</div>
 										<p>
 											<span class="title-s">Email:
-											</span><a href="mailto:{{ user.email }}">{{ user.email }}</a>
-											</p>
+											</span>
+											<a href="mailto:{{ user.email }}">{{ user.email }}</a>
+										</p>
 										<div class="socials text-center">
 											<ul>
-												<li><a href="{{ user.linkedin }}"><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
-												<li><a href="{{ user.twitter }}"><span class="ico-circle"><i class="bi bi-twitter"></i></span></a></li>
-												<li><a href="mailto:{{ user.email }}"><span class="ico-circle"><i class="bi bi-envelope-fill"></i></span></a></li>
+												<li>
+													<a href="{{user.linkedin}}"><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a>
+												</li>
+												<li>
+													<a href="{{user.twitter}}"><span class="ico-circle"><i class="bi bi-twitter"></i></span></a>
+												</li>
+												<li>
+													<a href="mailto:{{ user.email }}"><span class="ico-circle"><i class="bi bi-envelope-fill"></i></span></a>
+												</li>
 											</ul>
 										</div>
 									</div>
