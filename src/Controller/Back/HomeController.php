@@ -32,9 +32,6 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $filesystem = new Filesystem();
-            $filesystem->remove('/public/assets/img/logo-email.png');
-
             $fileUploader->uploadMailImage($form);
 
             $this->addFlash('success', 'L\'image du mail de confirmation a bien été modifiée.');
