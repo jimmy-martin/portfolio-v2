@@ -5,6 +5,7 @@ namespace App\Controller\Back;
 use App\Form\MailImageType;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,6 +32,9 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $filesystem = new Filesystem();
+            $filesystem->remove('/public/assets/img/logo-email.png');
+
             $fileUploader->uploadMailImage($form);
 
             $this->addFlash('success', 'L\'image du mail de confirmation a bien été modifiée.');
