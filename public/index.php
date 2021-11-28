@@ -9,7 +9,12 @@ $trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? $_ENV['TRUSTED_PROXIES'] ?? fal
 $trustedProxies = $trustedProxies ? explode(',', $trustedProxies) : [];
 if ($_SERVER['APP_ENV'] == 'prod') $trustedProxies[] = $_SERVER['REMOTE_ADDR'];
 if ($trustedProxies) {
-    Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_AWS_ELB);
+    Request::setTrustedProxies($trustedProxies, Request::HEADER_FORWARDED);
+    Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_FOR);
+    Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_HOST);
+    Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_PROTO);
+    Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_PORT);
+    Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_PREFIX);
 }
 
 return function (array $context) {
