@@ -1,6 +1,9 @@
 # portfolio-v2
 
-## Voici la deuxième version de mon portfolio avec toujours le même template mais cette fois-ci avec le framework Symfony et une réelle base de données
+## Voici la seconde version de mon portfolio
+Liste des principaux changements apportés par cette version :
+- utilisation de Symfony et de Twig pour la partie front de l'application
+- un back-office permettant de gérer mon site comme je le souhaite (exemple: CRUD sur les projets, ajout d'un projet sur la page d'accueil, etc.)
 
 ## Schéma des données
 
