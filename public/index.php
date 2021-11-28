@@ -11,7 +11,7 @@ if ($_SERVER['APP_ENV'] == 'prod') $trustedProxies[] = $_SERVER['REMOTE_ADDR'];
 if ($trustedProxies) {
     Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_PROTO);
 }
-dd($_SERVER);
+
 return function (array $context) {
     return new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
 };
