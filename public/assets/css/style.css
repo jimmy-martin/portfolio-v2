@@ -969,3 +969,16 @@ footer .credits {
 footer .credits a {
     color: #fff
 }
+
+/* ---------- Fill button on :hover by displaying the filled button and the hiding unfilled  ---------- */
+
+.square_icon:hover .bi-arrow-right-square,
+.square_icon .bi-arrow-right-square-fill,
+.eye_icon:hover .bi-eye,
+.eye_icon .bi-eye-fill {
+    display: none;
+}
+.square_icon:hover .bi-arrow-right-square-fill,
+.eye_icon:hover .bi-eye-fill {
+    display: inline;
+}
