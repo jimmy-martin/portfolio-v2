@@ -44,7 +44,6 @@ a:hover {
 
 .box-shadow,
 .paralax-mf,
-.service-box,
 .work-box {
     box-shadow: 0 13px 8px -10px rgba(0, 0, 0, .1)
 }
@@ -222,8 +221,7 @@ a:hover {
 }
 
 .socials ul,
-.ul-resect,
-.widget-tags ul {
+.ul-resect{
     list-style: none;
     padding-left: 0;
     margin-bottom: 0
@@ -783,76 +781,6 @@ a:hover {
     background-color: #0078ff
 }
 
-.service-box {
-    background-color: #fff;
-    padding: 2.5rem 1.3rem;
-    border-radius: 1rem;
-    margin-bottom: 3rem;
-    text-align: center
-}
-
-.service-box:hover .ico-circle {
-    transition: all .5s ease;
-    color: #fff;
-    background-color: #0078ff;
-    box-shadow: 0 0 0 10px #cde1f8
-}
-
-.service-box .service-ico {
-    margin-bottom: 1rem;
-    color: #1e1e1e
-}
-
-.service-box .ico-circle {
-    transition: all .5s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center
-}
-
-.service-box .ico-circle i {
-    line-height: 0;
-    font-size: 40px
-}
-
-.service-box .s-title {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    text-align: center;
-    padding: .4rem 0
-}
-
-.service-box .s-description {
-    color: #4e4e4e
-}
-
-.counter-box {
-    color: #fff;
-    text-align: center
-}
-
-@media (min-width:577px) {
-    .counter-box {
-        margin-bottom: 1.8rem
-    }
-}
-
-.counter-ico {
-    margin-bottom: 1rem
-}
-
-.counter-ico .ico-circle {
-    height: 60px;
-    width: 60px;
-    line-height: 1.5;
-    box-shadow: 0 0 0 10px #cde1f8
-}
-
-.counter-num .counter {
-    font-size: 2rem;
-    margin-bottom: 0
-}
-
 .work-box {
     margin-bottom: 3rem;
     -webkit-backface-visibility: hidden;
@@ -937,18 +865,6 @@ a:hover {
     100% {
         transform: rotate(360deg)
     }
-}
-
-.widget-tags ul li {
-    display: inline-block;
-    background-color: #0078ff;
-    padding: .2rem .6rem;
-    margin-bottom: .5rem;
-    border-radius: 15px
-}
-
-.widget-tags ul li a {
-    color: #fff
 }
 
 footer {
