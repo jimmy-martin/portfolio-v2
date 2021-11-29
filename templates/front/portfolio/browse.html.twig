@@ -25,9 +25,9 @@
 			{% for project in projects %}
 				<!-- Project start-->
 				<div id="{{ project.id }}" class="row mb-4">
-					<div class="card mb-3 work-box pb-2">
+					<div class="card mb-3 work-box py-2">
 						<div class="row g-0">
-							<div class="col-xxl-4 text-center">
+							<div class="col-xxl-4 text-center align-self-center">
 								<a href="{{ asset('assets/img/' ~ project.image) }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
 									<div class="work-img">
 										<img src="{{ asset('assets/img/' ~ project.image) }}" alt="..." class="img-fluid">
@@ -53,8 +53,9 @@
 											</a>
 										{% endif %}
 										{% if project.url != null%}
-											<a class="eyeIcon" href="{{ project.url }}" target="_blank">
+											<a class="eye_icon" href="{{ project.url }}" target="_blank">
 												<span class="bi bi-eye"></span>
+												<span class="bi bi-eye-fill"></span>
 											</a>
 										{% endif %}
 									</div>
